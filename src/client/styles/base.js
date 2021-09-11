@@ -99,24 +99,27 @@ const base = {
     fontFamily: font,
     fontSize: 14,
     left: 0,
+    overflow: 'hidden',
     position: 'absolute',
     right: 0,
     top: 0
   },
   'panel.head': {
     backgroundColor: background[0],
+    left: 0,
+    overflow: 'hidden',
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    transition: '1s'
+  },
+  'panel.head.top': {
     borderBottom: '1px solid rgba(0,0,0,.40)',
     display: 'flex',
     flexFlow: 'row nowrap',
-    left: 0,
     justifyContent: 'flex-start',
-    minHeight: 25,
-    overflow: 'hidden',
-    padding: 14,
-    position: 'absolute',
-    top: 0,
-    transition: '1s',
-    width: '100%'
+    minHeight: 26,
+    padding: 14
   },
   'panel.head.icon': {
     display: 'block',
@@ -131,7 +134,7 @@ const base = {
     overflow: 'auto',
     padding: 20,
     position: 'absolute',
-    top: 54,
+    top: 100,
     transition: '1s',
     right: 0
   },
@@ -282,6 +285,57 @@ const base = {
     right: 0,
     backgroundColor: background[1],
     borderTop: `6px solid ${background[1]}`
+  },
+  'crumbs': {
+    alignItems: 'center',
+    backgroundColor: background[1],
+    color: color.default,
+    display: 'flex',
+    padding: 10
+  },
+  'crumbs.link': {
+    alignItems: 'center',
+    color: color.secondary,
+    display: 'inline-flex',
+    textDecoration: 'none'
+  },
+  'crumbs.span': {
+    alignItems: 'center',
+    display: 'inline-flex'
+  },
+  'crumbs.icon': {
+    fontSize: 16,
+    marginRight: 5
+  },
+  'crumbs.separator': {
+    color: '#AAAAAA'
+  },
+  'table': {
+    borderSpacing: 0,
+    width: '100%'
+  },
+  'table.head': {
+    backgroundColor: background[1],
+    paddingBottom: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 20,
+    position: 'relative',
+    textAlign: 'left'
+  },
+  'table.row': {
+    backgroundColor: background[2]
+  },
+  'table.row.stripe': {
+    backgroundColor: background[3]
+  },
+  'table.col': {
+    backgroundColor: 'inherit',
+    borderTop: `1px solid ${background[1]}`,
+    paddingBottom: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 20
   }
 }
 

@@ -19,7 +19,8 @@ const initialState = {
     current: null,
     screens: []
   }, 
-  responsive: 'xs'
+  responsive: 'xs',
+  crumbs: []
 }
 
 const actions = {
@@ -50,6 +51,10 @@ const actions = {
       ...state.menu,
       items: items
     } 
+  }),
+  SET_CRUMBS: (state, crumbs) => ({ 
+    ...state, 
+    crumbs: crumbs
   }),
   SET_PANEL: (state, current) => ({ 
     ...state, 
@@ -112,8 +117,11 @@ const handlers = {
     return { type: 'UPDATE_MENU', payload: menu }
   },
   
-  setBody(body) {
-    return { type: 'SET_BODY', payload: body }
+  setCrumbs(crumbs) {
+    if (!Array.isArray(crumbs)) {
+      crumbs = [ crumbs ]
+    }
+    return { type: 'SET_CRUMBS', payload: crumbs }
   },
   
   setPanel(panel) {
@@ -137,6 +145,9 @@ const handlers = {
 const views = {
   showMenu(state) {
     return state.menu.show
+  },
+  getCrumbs(state) {
+    return state.crumbs
   },
   getMenuItems(state) {
     return state.menu.items
