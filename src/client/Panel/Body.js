@@ -1,19 +1,47 @@
 import React from 'react'
-import state from '../state'
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
 
-export default function Body({ routes }) {
-  const style = state.withReact.getStyle('panel.body')
+const useStyles = makeStyles((theme) => ({
+  content: {
+    bottom: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    left: 0,
+    overflow: 'auto',
+    padding: theme.spacing(2),
+    position: 'absolute',
+    top: 98,
+    transition: '1s',
+    right: 0,
+    [theme.breakpoints.up('sm')]: {
+      left: 240,
+      top: 106,
+      transition: '0s',
+      width: `calc(100% - 240px)`
+    }
+  }
+}))
+
+export default function PanelBody(props) {
+  const { routes, open, close, forward, backward, crumbs } = props
+  const classes = useStyles()
   routes.push({ href: '/', body: () => { return <h1>Hello</h1> } })
-  routes = routes.map((route, key) => (
-    <Route key={key} path={route.href} component={route.body} />
+  const cases = routes.map((route, key) => (
+    <Route key={key} path={route.href}>
+      <route.body
+        open={open} 
+        close={close} 
+        forward={forward} 
+        backward={backward}
+        crumbs={crumbs}
+      />
+    </Route>
   ))
 
   return (
-    <main style={style}>
-      <Switch>
-        {routes}
-      </Switch>
+    <main className={classes.content}>
+      <Switch>{cases}</Switch>
     </main>
   )
 }

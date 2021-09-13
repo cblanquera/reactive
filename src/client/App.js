@@ -2,12 +2,12 @@ import React from 'react'
 import { Provider } from 'react-redux'
 
 import Panel from './Panel'
-import state from './state'
+import screens from './screens'
 
 export default function App() {
   return (
-    <Provider store={state.store}>
-      <Panel title="Incept" href="/" />
+    <Provider store={screens.store}>
+      <Panel title="Reactive" href="/" />
     </Provider>
   )
 }

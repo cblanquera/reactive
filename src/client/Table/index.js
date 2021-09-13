@@ -1,14 +1,24 @@
 import React from 'react'
-
-import state from '../state'
+import { makeStyles } from '@material-ui/core/styles'
 
 import Thead from './Head'
 import Tcol from './Col'
 import Trow from './Row'
 
+const useStyles = makeStyles((theme) => ({
+  table: {
+    borderSpacing: 0,
+    width: '100%'
+  },
+  tableScroll: {
+    overflow: 'auto',
+    flexGrow: 1,
+    width: '100%'
+  }
+}))
 
 export default function Table(props) {
-  const style = state.withReact.getStyle('table')
+  const classes = useStyles()
   
   const head = []
   const body = []
@@ -20,12 +30,13 @@ export default function Table(props) {
     }
   }
 
-  Object.assign(style, props.style || {})
   return (
-    <table style={style}>
-      <thead><tr>{head}</tr></thead>
-      <tbody>{body}</tbody>
-    </table>
+    <div className={classes.tableScroll}>
+      <table className={classes.table}>
+        <thead><tr>{head}</tr></thead>
+        <tbody>{body}</tbody>
+      </table>
+    </div>
   )
 }
 

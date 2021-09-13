@@ -1,19 +1,46 @@
 import React from 'react'
 import HomeIcon from '@material-ui/icons/Home'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
+import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 
-import state from '../state'
+const useStyles = makeStyles((theme) => ({
+  crumbs: {
+    alignItems: 'center',
+    backgroundColor: theme.palette.background.inset,
+    borderTop: '1px solid rgba(0, 0, 0, 0.40)',
+    color: theme.palette.text.primary,
+    display: 'flex',
+    padding: 10
+  },
+  crumbsLink: {
+    alignItems: 'center',
+    color: theme.palette.secondary.main,
+    display: 'inline-flex',
+    textDecoration: 'none'
+  },
+  crumbsItem: {
+    alignItems: 'center',
+    display: 'inline-flex'
+  },
+  crumbsIcon: {
+    fontSize: 16,
+    marginRight: 5
+  },
+  crumbsSep: {
+    color: '#AAAAAA'
+  },
+}))
 
-function Item({ href, title, Icon, last, styles }) {
-  const icon = Icon && <Icon style={styles['crumbs.icon']} />
+function Item({ href, title, Icon, last, classes }) {
+  const icon = Icon && <Icon className={classes.crumbsIcon} />
   const separator = !last 
-    ? <ChevronRightIcon style={styles['crumbs.separator']} /> 
+    ? <ChevronRightIcon className={classes.crumbsSep} /> 
     : null
   
   const item = href
-    ? <Link to={href} style={styles['crumbs.link']}>{title}</Link>
-    : <span style={styles['crumbs.span']}>{title}</span>
+    ? <Link to={href} className={classes.crumbsLink}>{title}</Link>
+    : <span className={classes.crumbsItem}>{title}</span>
   
   return (
     <>
@@ -24,35 +51,26 @@ function Item({ href, title, Icon, last, styles }) {
   )
 }
 
-export default function Crumbs() {
-  const reactState = state.withReact
-  const crumbs = [
+export default function Crumbs({ crumbs }) {
+  const classes = useStyles()
+  const trail = [
     {
       href: '/',
       icon: HomeIcon,
       title: 'Admin'
     }, 
-    ...(reactState.getCrumbs())
+    ...crumbs
   ]
-  const styles = reactState.getStyles(
-    'crumbs',
-    'crumbs.link',
-    'crumbs.span',
-    'crumbs.icon',
-    'crumbs.separator'
-  )
-  const items = crumbs.map((item, key) => (
+  const items = trail.map((item, key) => (
     <Item 
       key={key} 
       href={item.href} 
       title={item.title} 
       Icon={item.icon} 
-      styles={styles}
-      last={key === (crumbs.length - 1)}
+      classes={classes}
+      last={key === (trail.length - 1)}
     />
   ))
 
-  return (
-    <nav style={styles['crumbs']}>{items}</nav>
-  )
+  return <nav className={classes.crumbs}>{items}</nav>
 }

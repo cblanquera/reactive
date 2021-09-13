@@ -1,5 +1,43 @@
 import React from 'react'
-import state from '../state'
+
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = (props) => {
+  return makeStyles((theme) => ({
+    tableCol: (() => {
+      const styles = {
+        backgroundColor: 'inherit',
+        borderTop: `1px solid ${theme.palette.background.default}`,
+        paddingBottom: 20,
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 20
+      }
+
+      if ('sticky-top' in props) {
+        styles.position = 'sticky'
+        styles.zIndex = 1
+        styles.top = 0
+      } 
+      if ('sticky-left' in props) {
+        styles.position = 'sticky'
+        styles.zIndex = 2
+        styles.left = 0
+      }
+      if ('sticky-right' in props) {
+        styles.position = 'sticky'
+        styles.zIndex = 2
+        styles.right = 0
+      }
+    
+      if ('nowrap' in props) {
+        styles.whiteSpace = 'nowrap'
+      }
+
+      return styles
+    })()
+  }))()
+}
 
 function Rule({width}) {
   const style = {
@@ -11,28 +49,7 @@ function Rule({width}) {
 }
 
 export default function TableCol(props) {
-  const style = state.withReact.getStyle('table.col')
-  if ('sticky-top' in props) {
-    style.position = 'sticky'
-    style.zIndex = 1
-    style.top = 0
-  } 
-  if ('sticky-left' in props) {
-    style.position = 'sticky'
-    style.zIndex = 2
-    style.left = 0
-  }
-  if ('sticky-right' in props) {
-    style.position = 'sticky'
-    style.zIndex = 2
-    style.right = 0
-  }
-
-  if ('nowrap' in props) {
-    style.whiteSpace = 'nowrap'
-  }
-
-  Object.assign(style, props.style || {})
+  const classes = useStyles(props)
 
   const extras = {}
   if ('rowspan' in props) {
@@ -55,7 +72,7 @@ export default function TableCol(props) {
     rule = <Rule width={500} />
   } 
   return (
-    <td style={style} {...extras}>
+    <td className={classes.tableCol} {...extras}>
       {props.children}
       {rule}
     </td>

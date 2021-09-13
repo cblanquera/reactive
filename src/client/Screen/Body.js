@@ -1,10 +1,25 @@
 import React from 'react'
-import state from '../state'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme) => ({
+  body: {
+    left: 0,
+    overflowX: 'hidden',
+    overflowY: 'auto',
+    padding: theme.spacing(1),
+    position: 'absolute',
+    right: 0,
+    top: '56px',
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1
+  }
+}))
 
 export default function ScreenBody({ children }) {
-  const style = state.withReact.getStyle('screen.body')
+  const classes = useStyles()
   return (
-    <section style={style}>
+    <section className={classes.body}>
       {children}
     </section>
   )

@@ -1,37 +1,52 @@
 import React from 'react'
-import { useEffect } from 'react'
 
-import state from '../state'
+import Drawer from '@material-ui/core/Drawer'
 
-function getStyle(reactState, screens) {
-  const style = reactState.getStyle('panel.right')
-  if (screens) {
-    style.right = 0
-  }
+import Hidden from '@material-ui/core/Hidden'
+import { makeStyles } from '@material-ui/core/styles'
 
-  return style
-}
-
-export default function PanelRight() {
-  const ref = React.createRef()
-  const reactState = state.withReact
-  const screens = reactState.getScreens() 
-  const dispatch = reactState.dispatch()
-  const style = getStyle(reactState, screens.length)
-  //on mounted, scroll to last (clientWidth)
-  useEffect(() => {
-    //set the right panel
-    dispatch.setPanel(ref.current)
-    //adjust size on responsive
-    function handleResize() {
-      const scrollTo = Math.max(screens.length - 1, 0) * ref.current.clientWidth
-      ref.current.scrollLeft = scrollTo
+const useStyles = makeStyles((theme) => ({
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    overflowY: 'hidden',
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: 550
     }
-    window.addEventListener('resize', handleResize, true)
-    return () => window.removeEventListener('resize', handleResize, true)
-  })
+  },
+  screens: {
+    alignItems: 'flex-start',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    height: '100%',
+    justifyContent: 'flex-start',
+    overflow: 'hidden',
+    scrollBehavior: 'smooth',
+    width: '100%',
+  }
+}))
+
+export default React.forwardRef(function PanelRight(props, ref) {
+  const { screens, close } = props
+  const classes = useStyles()
 
   return (
-    <aside ref={ref} style={style}>{screens}</aside>
+    <Hidden smUp implementation="css">
+      <Drawer
+        variant="temporary"
+        anchor="right"
+        open={!!screens.length}
+        onClose={close}
+        ModalProps={{ keepMounted: true }}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <div ref={ref} className={classes.screens}>
+          {screens}
+        </div>
+      </Drawer>
+    </Hidden>
   )
-}
+})

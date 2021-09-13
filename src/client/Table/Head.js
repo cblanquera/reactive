@@ -1,30 +1,46 @@
 import React from 'react'
-import state from '../state'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = (props) => {
+  return makeStyles((theme) => ({
+    tableHead: (() => {
+      const styles = {
+        backgroundColor: theme.palette.background.inset,
+        paddingBottom: 20,
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 20,
+        position: 'relative',
+        textAlign: 'left'
+      }
+
+      if ('sticky-top' in props) {
+        styles.position = 'sticky'
+        styles.zIndex = 3
+        styles.top = 0
+      } 
+      if ('sticky-left' in props) {
+        styles.position = 'sticky'
+        styles.zIndex = 4
+        styles.left = 0
+      } 
+      if ('sticky-right' in props) {
+        styles.position = 'sticky'
+        styles.zIndex = 4
+        styles.right = 0
+      }
+    
+      if ('nowrap' in props) {
+        styles.whiteSpace = 'nowrap'
+      }
+
+      return styles
+    })()
+  }))()
+}
 
 export default function TableHead(props) {
-  const style = state.withReact.getStyle('table.head')
-  if ('sticky-top' in props) {
-    style.position = 'sticky'
-    style.zIndex = 3
-    style.top = 0
-  } 
-  if ('sticky-left' in props) {
-    style.position = 'sticky'
-    style.zIndex = 4
-    style.left = 0
-  } 
-  if ('sticky-right' in props) {
-    style.position = 'sticky'
-    style.zIndex = 4
-    style.right = 0
-  }
-
-  if ('nowrap' in props) {
-    style.whiteSpace = 'nowrap'
-  }
-
-  Object.assign(style, props.style || {})
-
+  const classes = useStyles(props)
   const extras = {}
   if ('rowspan' in props) {
     extras.rowspan = props.rowspan
@@ -32,5 +48,5 @@ export default function TableHead(props) {
   if ('colspan' in props) {
     extras.colspan = props.colspan
   }
-  return <th style={style} {...extras}>{props.children}</th>
+  return <th className={classes.tableHead} {...extras}>{props.children}</th>
 }
