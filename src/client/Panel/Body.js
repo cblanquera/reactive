@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     top: 98,
     transition: '1s',
     right: 0,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       left: 240,
       top: 106,
       transition: '0s',
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function PanelBody(props) {
-  const { routes, open, close, forward, backward, crumbs } = props
+  const { routes, open, close, forward, backward, crumbs, notify } = props
   const classes = useStyles()
   routes.push({ href: '/', body: () => { return <h1>Hello</h1> } })
   const cases = routes.map((route, key) => (
@@ -35,6 +35,7 @@ export default function PanelBody(props) {
         forward={forward} 
         backward={backward}
         crumbs={crumbs}
+        notify={notify}
       />
     </Route>
   ))

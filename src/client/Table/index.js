@@ -17,18 +17,41 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Table(props) {
-  const classes = useStyles()
-  
+function getHead(children) {
   const head = []
-  const body = []
-  for (const child of props.children) {
-    if (child.type.name === 'TableHead') {
+  for (const child of children) {
+    if (Array.isArray(child)) {
+      head.push.apply(head, getHead(child))
+    } else if (child.type && child.type.name === 'TableHead') {
       head.push(child)
-    } else if (child.type.name === 'TableRow') {
+    } else if ('thead' in child.props) {
+      head.push(child)
+    }
+  }
+
+  return head
+}
+
+function getBody(children) {
+  const body = []
+  for (const child of children) {
+    if (Array.isArray(child)) {
+      body.push.apply(head, getHead(child))
+    } else if (child.type && child.type.name === 'TableRow') {
+      body.push(child)
+    } else if ('tbody' in child.props) {
       body.push(child)
     }
   }
+
+  return body
+}
+
+export default function Table(props) {
+  const classes = useStyles()
+  
+  const head = getHead(props.children || [])
+  const body = getBody(props.children || [])
 
   return (
     <div className={classes.tableScroll}>

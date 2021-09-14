@@ -2,42 +2,40 @@ import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 
-const useStyles = (props) => {
-  return makeStyles((theme) => ({
-    tableCol: (() => {
-      const styles = {
-        backgroundColor: 'inherit',
-        borderTop: `1px solid ${theme.palette.background.default}`,
-        paddingBottom: 20,
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingTop: 20
-      }
+const useStyles = makeStyles((theme) => ({
+  tableCol: (props) => {
+    const styles = {
+      backgroundColor: 'inherit',
+      borderTop: '1px solid rgba(0, 0, 0, 0.25)',
+      paddingBottom: 20,
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingTop: 20
+    }
 
-      if ('sticky-top' in props) {
-        styles.position = 'sticky'
-        styles.zIndex = 1
-        styles.top = 0
-      } 
-      if ('sticky-left' in props) {
-        styles.position = 'sticky'
-        styles.zIndex = 2
-        styles.left = 0
-      }
-      if ('sticky-right' in props) {
-        styles.position = 'sticky'
-        styles.zIndex = 2
-        styles.right = 0
-      }
-    
-      if ('nowrap' in props) {
-        styles.whiteSpace = 'nowrap'
-      }
+    if ('sticky-top' in props) {
+      styles.position = 'sticky'
+      styles.zIndex = 1
+      styles.top = 0
+    } 
+    if ('sticky-left' in props) {
+      styles.position = 'sticky'
+      styles.zIndex = 2
+      styles.left = 0
+    }
+    if ('sticky-right' in props) {
+      styles.position = 'sticky'
+      styles.zIndex = 2
+      styles.right = 0
+    }
+  
+    if ('nowrap' in props) {
+      styles.whiteSpace = 'nowrap'
+    }
 
-      return styles
-    })()
-  }))()
-}
+    return styles
+  }
+}))
 
 function Rule({width}) {
   const style = {
@@ -53,10 +51,16 @@ export default function TableCol(props) {
 
   const extras = {}
   if ('rowspan' in props) {
-    extras.rowspan = props.rowspan
+    extras.rowSpan = props.rowspan
   }
   if ('colspan' in props) {
-    extras.colspan = props.colspan
+    extras.colSpan = props.colspan
+  }
+  if ('rowSpan' in props) {
+    extras.rowSpan = props.rowSpan
+  }
+  if ('colSpan' in props) {
+    extras.colSpan = props.colSpan
   }
 
   let rule = null

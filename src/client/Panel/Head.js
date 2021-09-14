@@ -15,14 +15,14 @@ const useStyles = makeStyles((theme) => {
     appBar: {
       borderBottom: '1px solid rgba(0, 0, 0, 0.40)',
       boxShadow: 'none',
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up('md')]: {
         width: `calc(100% - 240px)`,
         marginLeft: 240,
       },
     },
     menuButton: {
       marginRight: theme.spacing(2),
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up('md')]: {
         display: 'none',
       },
     }

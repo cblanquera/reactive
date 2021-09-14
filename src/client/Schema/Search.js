@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Button from '@material-ui/core/Button'
 import AddIcon from '@material-ui/icons/Add'
 import StorageIcon from '@material-ui/icons/Storage'
@@ -31,14 +31,17 @@ const trail = [
 
 export default function SchemaSearch(props) {
   const { backward, forward, open, crumbs } = props
-  //set the crumb trails
-  crumbs(trail)
   //define listeners
   const prev = () => backward(1)
   const next = () => forward(<Form prev={prev} next={next} />)
   const add = () => open(<Form prev={prev} next={next} />)
   //make classes
   const classes = useStyles()
+
+  useEffect(() => {
+    //set the crumb trails
+    crumbs(trail)
+  }, [])
 
   return (
     <>

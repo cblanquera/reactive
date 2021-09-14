@@ -7,6 +7,7 @@ import PanelHead from './Head'
 import PanelBody from './Body'
 import PanelLeft from './Left'
 import PanelRight from './Right'
+import Notify from './Notify'
 
 import menu from '../menu'
 import screens from '../screens'
@@ -30,10 +31,13 @@ export default function Panel({ src, href, title }) {
   //panel states
   const [ menuShown, showMenu ] = React.useState(false)
   const [ crumbs, setCrumbs ] = React.useState([])
+  const [ notification, setNotification ] = React.useState({})
   const { open, close, forward, backward } = screens.useDispatch()
   //panel actions
   const ref = React.createRef()
   const toggle = () => showMenu(!menuShown)
+  const notify = (message, type) => setNotification({ message, type })
+  const clear = () => setNotification({})
   const routes = getRoutes(menu)
   const history = screens.get()
 
@@ -65,6 +69,7 @@ export default function Panel({ src, href, title }) {
         forward={forward} 
         backward={backward}
         crumbs={setCrumbs}
+        notify={notify}
       />
       <PanelLeft 
         src={src} 
@@ -78,6 +83,11 @@ export default function Panel({ src, href, title }) {
         ref={ref} 
         screens={history} 
         close={close} 
+      />
+      <Notify 
+        clear={clear}
+        message={notification.message || ''} 
+        severity={notification.type || 'info'} 
       />
     </ThemeProvider>
   )

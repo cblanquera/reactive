@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 export default function TableRow(props) {
   const classes = useStyles()
   
-  const className = 'stripe' in props 
+  const className = 'stripe' in props && props.stripe
     ? classes.tableRowStriped
     : classes.tableRow
 

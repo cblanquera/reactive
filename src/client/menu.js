@@ -1,9 +1,11 @@
 import CodeIcon from '@material-ui/icons/Code'
+import CameraIcon from '@material-ui/icons/Camera'
 import StorageIcon from '@material-ui/icons/Storage'
 import SettingsIcon from '@material-ui/icons/Settings'
 import LocalCafeIcon from '@material-ui/icons/LocalCafe'
 
 import Schema from './Schema'
+import Template from './Template'
 
 export default [
   {
@@ -67,5 +69,11 @@ export default [
         title: 'Settings'
       }
     ]
+  },
+  {
+    icon: CameraIcon,
+    title: 'Template',
+    href: '/admin/template',
+    body: Template.Search
   }
 ]

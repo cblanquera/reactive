@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Drawer from '@material-ui/core/Drawer'
-import Divider from '@material-ui/core/Divider'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -19,7 +18,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: 240,
       flexShrink: 0,
     },
@@ -137,7 +136,7 @@ export default function PanelLeft(props) {
 
   return (
     <nav className={classes.drawer}>
-      <Hidden smUp implementation="css">
+      <Hidden mdUp implementation="css">
         <Drawer
           variant="temporary"
           anchor="left"
@@ -164,7 +163,7 @@ export default function PanelLeft(props) {
           <Menu items={menu} />
         </Drawer>
       </Hidden>
-      <Hidden xsDown implementation="css">
+      <Hidden smDown implementation="css">
         <Drawer 
           variant="permanent" 
           classes={{
