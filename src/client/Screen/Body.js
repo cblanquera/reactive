@@ -1,41 +1,28 @@
+//vendor imports
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+//self imports
+import styles from './styles'
 
-const useStyles = makeStyles((theme) => ({
-  body: (props) => {
-    const styles = {
-      bottom: 0,
-      left: 0,
-      overflowX: 'hidden',
-      overflowY: 'auto',
-      position: 'absolute',
-      right: 0,
-      top: 54,
-      display: 'flex',
-      flexDirection: 'column',
-      flexGrow: 1
-    }
-
-    if ('withFoot' in props) {
-      styles.bottom = 57
-    }
-
-    if ('withFoot2' in props) {
-      styles.bottom = 93
-    }
-
-    if (typeof props.style === 'object') {
-      Object.assign(styles, props.style)
-    }
-
-    return styles
-  }
-}))
-
+//main component
 export default function ScreenBody(props) {
-  const classes = useStyles(props)
+  //classes
+  const classNames = props.classes || styles()
+  //styles
+  const style = {}
+  if ('withFoot' in props) {
+    style.bottom = 57
+  }
+
+  if ('withFoot2' in props) {
+    style.bottom = 93
+  }
+
+  if (typeof props.style === 'object') {
+    Object.assign(style, props.style)
+  }
+  //render
   return (
-    <section className={classes.body}>
+    <section className={classNames.screenBody} style={style}>
       {props.children}
     </section>
   )

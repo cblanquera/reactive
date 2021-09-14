@@ -1,17 +1,19 @@
+//vendor imports
 import React, { useEffect } from 'react'
-
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { theme, ThemeProvider } from '../theme'
+//local imports
+import menu from '../menu'
+import screens from '../screens'
 
+//self imports
+import Notify from './Notify'
 import PanelHead from './Head'
 import PanelBody from './Body'
 import PanelLeft from './Left'
 import PanelRight from './Right'
-import Notify from './Notify'
+import styles from './styles'
 
-import menu from '../menu'
-import screens from '../screens'
-
+//helpers
 function getRoutes(menu) {
   const routes = []
   for (const item of menu) {
@@ -27,22 +29,25 @@ function getRoutes(menu) {
   return routes
 }
 
+//main component
 export default function Panel({ src, href, title }) {
-  //panel states
+  //states
   const [ menuShown, showMenu ] = React.useState(false)
   const [ crumbs, setCrumbs ] = React.useState([])
   const [ notification, setNotification ] = React.useState({})
   const { open, close, forward, backward } = screens.useDispatch()
-  //panel actions
-  const ref = React.createRef()
+  //actions
   const toggle = () => showMenu(!menuShown)
   const notify = (message, type) => setNotification({ message, type })
   const clear = () => setNotification({})
+  //props
+  const classes = styles()
   const routes = getRoutes(menu)
   const history = screens.get()
-
+  //this is for the right panel
+  const ref = React.createRef()
   useEffect(() => {
-    //adjust size on responsive
+    //adjust right panel size on responsive
     function handleResize() {
       const scrollTo = Math.max(history.length - 1, 0) * ref.current.clientWidth
       ref.current.scrollLeft = scrollTo
@@ -57,12 +62,17 @@ export default function Panel({ src, href, title }) {
     
     return () => window.removeEventListener('resize', handleResize, true)
   })
-
+  //render
   return (
-    <ThemeProvider theme={theme}>
+    <section>
       <CssBaseline />
-      <PanelHead toggle={toggle} crumbs={crumbs} />
+      <PanelHead 
+        classes={classes}
+        toggle={toggle} 
+        crumbs={crumbs} 
+      />
       <PanelBody 
+        classes={classes}
         routes={routes} 
         open={open} 
         close={close} 
@@ -72,6 +82,7 @@ export default function Panel({ src, href, title }) {
         notify={notify}
       />
       <PanelLeft 
+        classes={classes}
         src={src} 
         href={href} 
         title={title}
@@ -80,6 +91,7 @@ export default function Panel({ src, href, title }) {
         toggle={toggle} 
       />
       <PanelRight 
+        classes={classes}
         ref={ref} 
         screens={history} 
         close={close} 
@@ -89,6 +101,6 @@ export default function Panel({ src, href, title }) {
         message={notification.message || ''} 
         severity={notification.type || 'info'} 
       />
-    </ThemeProvider>
+    </section>
   )
 }

@@ -1,4 +1,6 @@
+//vendor imports
 import React from 'react'
+//local imports
 import { Table, Trow, Tcol } from '../../Table'
 
 export default function Metadata({ row }) {

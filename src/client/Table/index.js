@@ -1,22 +1,12 @@
+//vendor imports
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-
+//self imports
 import Thead from './Head'
 import Tcol from './Col'
 import Trow from './Row'
+import styles from './styles'
 
-const useStyles = makeStyles((theme) => ({
-  table: {
-    borderSpacing: 0,
-    width: '100%'
-  },
-  tableScroll: {
-    overflow: 'auto',
-    flexGrow: 1,
-    width: '100%'
-  }
-}))
-
+//helpers
 function getHead(children) {
   const head = []
   for (const child of children) {
@@ -47,15 +37,15 @@ function getBody(children) {
   return body
 }
 
+//main component
 export default function Table(props) {
-  const classes = useStyles()
-  
+  const classNames = props.classes || styles()
   const head = getHead(props.children || [])
   const body = getBody(props.children || [])
 
   return (
-    <div className={classes.tableScroll}>
-      <table className={classes.table}>
+    <div className={classNames.tableScroll}>
+      <table className={classNames.table}>
         <thead><tr>{head}</tr></thead>
         <tbody>{body}</tbody>
       </table>

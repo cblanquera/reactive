@@ -1,41 +1,7 @@
+//vendor imports
 import React from 'react'
-
-import { makeStyles } from '@material-ui/core/styles'
-
-const useStyles = makeStyles((theme) => ({
-  tableCol: (props) => {
-    const styles = {
-      backgroundColor: 'inherit',
-      borderTop: '1px solid rgba(0, 0, 0, 0.25)',
-      paddingBottom: 20,
-      paddingLeft: 10,
-      paddingRight: 10,
-      paddingTop: 20
-    }
-
-    if ('sticky-top' in props) {
-      styles.position = 'sticky'
-      styles.zIndex = 1
-      styles.top = 0
-    } 
-    if ('sticky-left' in props) {
-      styles.position = 'sticky'
-      styles.zIndex = 2
-      styles.left = 0
-    }
-    if ('sticky-right' in props) {
-      styles.position = 'sticky'
-      styles.zIndex = 2
-      styles.right = 0
-    }
-  
-    if ('nowrap' in props) {
-      styles.whiteSpace = 'nowrap'
-    }
-
-    return styles
-  }
-}))
+//self imports
+import styles from './styles'
 
 function Rule({width}) {
   const style = {
@@ -46,9 +12,35 @@ function Rule({width}) {
   return <hr style={style} />
 }
 
+//main component
 export default function TableCol(props) {
-  const classes = useStyles(props)
+  //classes
+  const classNames = props.classes || styles()
+  //styles
+  const style = {}
+  if ('stickyTop' in props) {
+    style.position = 'sticky'
+    style.zIndex = 1
+    style.top = 0
+  } 
+  if ('stickyLeft' in props) {
+    style.position = 'sticky'
+    style.zIndex = 2
+    style.left = 0
+  }
+  if ('stickyRight' in props) {
+    style.position = 'sticky'
+    style.zIndex = 2
+    style.right = 0
+  }
+  if ('noWrap' in props) {
+    style.whiteSpace = 'nowrap'
+  }
+  if (typeof props.style === 'object') {
+    Object.assign(style, props.style)
+  }
 
+  //props
   const extras = {}
   if ('rowspan' in props) {
     extras.rowSpan = props.rowspan
@@ -64,19 +56,23 @@ export default function TableCol(props) {
   }
 
   let rule = null
-  if ('wrap-1' in props) {
+  if ('wrap1' in props) {
     rule = <Rule width={100} />
-  } else if ('wrap-2' in props) {
+  } else if ('wrap2' in props) {
     rule = <Rule width={200} />
-  } else if ('wrap-3' in props) {
+  } else if ('wrap3' in props) {
     rule = <Rule width={300} />
-  } else if ('wrap-4' in props) {
+  } else if ('wrap4' in props) {
     rule = <Rule width={400} />
-  } else if ('wrap-5' in props) {
+  } else if ('wrap5' in props) {
     rule = <Rule width={500} />
   } 
   return (
-    <td className={classes.tableCol} {...extras}>
+    <td 
+      className={classNames.tableCol} 
+      style={style} 
+      {...extras}
+    >
       {props.children}
       {rule}
     </td>

@@ -1,21 +1,15 @@
+//vendor components
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+//self imports
+import styles from './styles'
 
-const useStyles = makeStyles((theme) => ({
-  tableRow: {
-    backgroundColor: theme.palette.background.paper
-  },
-  tableRowStriped: {
-    backgroundColor: theme.palette.background.accent
-  }
-}))
-
+//main component
 export default function TableRow(props) {
-  const classes = useStyles()
+  const classNames = props.classes || styles()
   
   const className = 'stripe' in props && props.stripe
-    ? classes.tableRowStriped
-    : classes.tableRow
+    ? classNames.tableRowStriped
+    : classNames.tableRow
 
   return <tr className={className}>{props.children}</tr>
 }

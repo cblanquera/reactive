@@ -1,36 +1,17 @@
+//vendor imports
 import React from 'react'
-
+//vendor components
 import Drawer from '@material-ui/core/Drawer'
-
 import Hidden from '@material-ui/core/Hidden'
-import { makeStyles } from '@material-ui/core/styles'
+//self imports
+import styles from './styles'
 
-const useStyles = makeStyles((theme) => ({
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    overflowY: 'hidden',
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 550
-    }
-  },
-  screens: {
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-    height: '100%',
-    justifyContent: 'flex-start',
-    overflow: 'hidden',
-    scrollBehavior: 'smooth',
-    width: '100%',
-  }
-}))
-
+//main component
 export default React.forwardRef(function PanelRight(props, ref) {
+  //expand props
   const { screens, close } = props
-  const classes = useStyles()
-
+  const classNames = props.classes || styles()
+  //render
   return (
     <Hidden smUp implementation="css">
       <Drawer
@@ -40,10 +21,10 @@ export default React.forwardRef(function PanelRight(props, ref) {
         onClose={close}
         ModalProps={{ keepMounted: true }}
         classes={{
-          paper: classes.drawerPaper,
+          paper: classNames.panelRight,
         }}
       >
-        <div ref={ref} className={classes.screens}>
+        <div ref={ref} className={classNames.panelRightScreens}>
           {screens}
         </div>
       </Drawer>

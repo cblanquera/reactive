@@ -1,44 +1,37 @@
+//vendor imports
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+//self imports
+import styles from './styles'
 
-const useStyles = makeStyles((theme) => ({
-  tableHead: (props) => {
-    const styles = {
-      backgroundColor: theme.palette.background.inset,
-      paddingBottom: 20,
-      paddingLeft: 10,
-      paddingRight: 10,
-      paddingTop: 20,
-      position: 'relative',
-      textAlign: 'left'
-    }
-
-    if ('sticky-top' in props) {
-      styles.position = 'sticky'
-      styles.zIndex = 3
-      styles.top = 0
-    } 
-    if ('sticky-left' in props) {
-      styles.position = 'sticky'
-      styles.zIndex = 4
-      styles.left = 0
-    } 
-    if ('sticky-right' in props) {
-      styles.position = 'sticky'
-      styles.zIndex = 4
-      styles.right = 0
-    }
-  
-    if ('nowrap' in props) {
-      styles.whiteSpace = 'nowrap'
-    }
-
-    return styles
-  }
-}))
-
+//main component
 export default function TableHead(props) {
-  const classes = useStyles(props)
+  //classes
+  const classNames = props.classes || styles()
+  //styles
+  const style = {}
+  if ('stickyTop' in props) {
+    style.position = 'sticky'
+    style.zIndex = 3
+    style.top = 0
+  } 
+  if ('stickyLeft' in props) {
+    style.position = 'sticky'
+    style.zIndex = 4
+    style.left = 0
+  } 
+  if ('stickyRight' in props) {
+    style.position = 'sticky'
+    style.zIndex = 4
+    style.right = 0
+  }
+  if ('noWrap' in props) {
+    style.whiteSpace = 'nowrap'
+  }
+  if (typeof props.style === 'object') {
+    Object.assign(style, props.style)
+  }
+
+  //props
   const extras = {}
   if ('rowspan' in props) {
     extras.rowSpan = props.rowspan
@@ -52,5 +45,13 @@ export default function TableHead(props) {
   if ('colSpan' in props) {
     extras.colSpan = props.colSpan
   }
-  return <th className={classes.tableHead} {...extras}>{props.children}</th>
+  return (
+    <th 
+      className={classNames.tableHead} 
+      style={style} 
+      {...extras}
+    >
+      {props.children}
+    </th>
+  )
 }

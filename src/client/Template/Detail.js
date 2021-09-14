@@ -1,37 +1,24 @@
+//vendor imports
 import React, { useState, useEffect } from 'react'
+//vendor components
 import Button from '@material-ui/core/Button'
 import Tab from '@material-ui/core/Tab'
 import Tabs from '@material-ui/core/Tabs'
-
+//vendor icons
 import EditIcon from '@material-ui/icons/Edit'
 import CloseIcon from '@material-ui/icons/Close'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
-
-import { makeStyles } from '@material-ui/core/styles'
-
+//local imports
 import Screen from '../Screen'
 import { Table, Thead } from '../Table'
-
-import store from './store'
+//self imports
 import Form from './Form'
 import SearchRows from './Search/Rows'
 import Metadata from './Detail/Metadata'
+import store from './store'
+import styles from './styles'
 
-const useStyles = makeStyles((theme) => ({
-  edit: {
-    display: 'flex',
-    marginBottom: '5px',
-    width: '100%'
-  },
-  copy: { 
-    marginRight: 5,
-    width: 'calc(50% - 2.5px)' 
-  },
-  remove: { 
-    width: 'calc(50% - 2.5px)' 
-  }
-}))
-
+//main components
 export default function TemplateDetail(props) {
   //expand props
   const { id, backward, forward, notify } = props
@@ -53,8 +40,6 @@ export default function TemplateDetail(props) {
     />
   )
 
-  const classes = useStyles()
-
   //only on first mount
   useEffect(() => {
     setTimeout(() => {
@@ -67,7 +52,8 @@ export default function TemplateDetail(props) {
       })
     }, 2000)
   }, [])
-
+  const classes = styles()
+  //render
   return (
     <>
       <Screen.Head title="Template Detail" onClick={prev} />
@@ -93,7 +79,7 @@ export default function TemplateDetail(props) {
       </Screen.Body>
       <Screen.Foot>
         <Button 
-          className={classes.edit} 
+          className={classes.detailEdit} 
           variant="contained" 
           color="secondary"
           startIcon={<EditIcon />}
@@ -102,7 +88,7 @@ export default function TemplateDetail(props) {
           Edit
         </Button>
         <Button 
-          className={classes.copy} 
+          className={classes.detailCopy} 
           variant="outlined" 
           color="secondary"
           startIcon={<FileCopyIcon />}
@@ -110,7 +96,7 @@ export default function TemplateDetail(props) {
           Copy
         </Button>
         <Button 
-          className={classes.remove} 
+          className={classes.detailRemove} 
           variant="outlined" 
           color="primary"
           startIcon={<CloseIcon />}

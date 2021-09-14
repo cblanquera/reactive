@@ -1,26 +1,15 @@
+//vendor imports
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-
+//self imports
 import ScreenHead from './Head'
 import ScreenBody from './Body'
 import ScreenFoot from './Foot'
+import styles from './styles'
 
-const useStyles = makeStyles((theme) => ({
-  screen: {
-    flexGrow: 0,
-    flexShrink: 0,
-    flexBasis: '100%',
-    height: '100%',
-    position: 'relative',
-    transition: '1s',
-    width: '100%'
-  }
-}))
-
-export default function Screen({ children }) {
-  const classes = useStyles()
+export default function Screen({ classes, children }) {
+  const classNames = classes || styles()
   return (
-    <section className={classes.screen}>
+    <section className={classNames.screen}>
       {children}
     </section>
   )

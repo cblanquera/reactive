@@ -1,9 +1,12 @@
+//vendor imports
 import React from 'react'
+//vendor components
 import IconButton from '@material-ui/core/IconButton'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-
+//local imports
 import { Trow,  Tcol} from '../../Table'
 
+//main component
 export default function SearchRows({rows, detail}) {
   if (!Array.isArray(rows)) {
     return <Trow><Tcol colSpan={8}>Loading...</Tcol></Trow>
@@ -11,14 +14,14 @@ export default function SearchRows({rows, detail}) {
 
   const children = rows.map((row, key) => (
     <Trow key={key} stripe={key % 2}>
-      <Tcol sticky-left>{row.id}</Tcol>
+      <Tcol stickyLeft>{row.id}</Tcol>
       <Tcol><img src={row.image} width={50} height={50} /></Tcol>
-      <Tcol wrap-1>{row.name}</Tcol>
-      <Tcol wrap-5>{row.bio}</Tcol>
+      <Tcol wrap1>{row.name}</Tcol>
+      <Tcol wrap5>{row.bio}</Tcol>
       <Tcol>{row.active? 'yes': 'no'}</Tcol>
-      <Tcol nowrap>{row.created}</Tcol>
-      <Tcol nowrap>{row.updated}</Tcol>
-      <Tcol sticky-right>
+      <Tcol noWrap>{row.created}</Tcol>
+      <Tcol noWrap>{row.updated}</Tcol>
+      <Tcol stickyRight>
         <IconButton onClick={detail(row.id !== 3? row.id: -1)}>
           <ChevronRightIcon />
         </IconButton>

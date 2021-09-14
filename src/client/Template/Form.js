@@ -1,30 +1,18 @@
+//vendor imports
 import React from 'react'
+//vendor components
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-
+//vendor icons
 import CheckIcon from '@material-ui/icons/Check'
-
-import { makeStyles } from '@material-ui/core/styles'
-
+//local imports
 import Screen from '../Screen'
+//self imports
+import styles from './styles'
 
-const useStyles = makeStyles((theme) => ({
-  publish: {
-    display: 'flex',
-    marginBottom: '5px',
-    width: '100%'
-  },
-  copy: { 
-    marginRight: 5,
-    width: 'calc(50% - 2.5px)' 
-  },
-  remove: { 
-    width: 'calc(50% - 2.5px)' 
-  }
-}))
-
+//main component
 export default function TemplateForm({ backward }) {
-  const classes = useStyles()
+  const classes = styles()
   const prev = () => backward(1)
   return (
     <>
@@ -47,7 +35,7 @@ export default function TemplateForm({ backward }) {
       </Screen.Body>
       <Screen.Foot>
         <Button 
-          className={classes.publish} 
+          className={classes.formPublish} 
           variant="contained" 
           color="secondary"
           startIcon={<CheckIcon />}
