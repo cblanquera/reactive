@@ -6,10 +6,10 @@ import ScreenBody from './Body'
 import ScreenFoot from './Foot'
 import styles from './styles'
 
-export default function Screen({ classes, children }) {
-  const classNames = classes || styles()
+export default function Screen({ children }) {
+  const classes = styles()
   return (
-    <section className={classNames.screen}>
+    <section className={classes.screen}>
       {children}
     </section>
   )

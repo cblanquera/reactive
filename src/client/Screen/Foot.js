@@ -3,10 +3,10 @@ import React from 'react'
 //self imports
 import styles from './styles'
 
-export default function ScreenFoot({ classes, children }) {
-  const classNames = classes || styles()
+export default function ScreenFoot({ children }) {
+  const classes = styles()
   return (
-    <footer className={classNames.screenFoot}>
+    <footer className={classes.screenFoot}>
       {children}
     </footer>
   )

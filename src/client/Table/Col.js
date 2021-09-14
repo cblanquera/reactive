@@ -15,7 +15,7 @@ function Rule({width}) {
 //main component
 export default function TableCol(props) {
   //classes
-  const classNames = props.classes || styles()
+  const classes = styles()
   //styles
   const style = {}
   if ('stickyTop' in props) {
@@ -69,7 +69,7 @@ export default function TableCol(props) {
   } 
   return (
     <td 
-      className={classNames.tableCol} 
+      className={classes.tableCol} 
       style={style} 
       {...extras}
     >

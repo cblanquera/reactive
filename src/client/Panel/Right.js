@@ -10,7 +10,7 @@ import styles from './styles'
 export default React.forwardRef(function PanelRight(props, ref) {
   //expand props
   const { screens, close } = props
-  const classNames = props.classes || styles()
+  const classes = styles()
   //render
   return (
     <Hidden smUp implementation="css">
@@ -21,10 +21,10 @@ export default React.forwardRef(function PanelRight(props, ref) {
         onClose={close}
         ModalProps={{ keepMounted: true }}
         classes={{
-          paper: classNames.panelRight,
+          paper: classes.panelRight,
         }}
       >
-        <div ref={ref} className={classNames.panelRightScreens}>
+        <div ref={ref} className={classes.panelRightScreens}>
           {screens}
         </div>
       </Drawer>

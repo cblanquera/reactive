@@ -6,7 +6,7 @@ import styles from './styles'
 //main component
 export default function TableHead(props) {
   //classes
-  const classNames = props.classes || styles()
+  const classes = styles()
   //styles
   const style = {}
   if ('stickyTop' in props) {
@@ -47,7 +47,7 @@ export default function TableHead(props) {
   }
   return (
     <th 
-      className={classNames.tableHead} 
+      className={classes.tableHead} 
       style={style} 
       {...extras}
     >

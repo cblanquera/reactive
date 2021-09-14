@@ -67,12 +67,10 @@ export default function Panel({ src, href, title }) {
     <section>
       <CssBaseline />
       <PanelHead 
-        classes={classes}
         toggle={toggle} 
         crumbs={crumbs} 
       />
       <PanelBody 
-        classes={classes}
         routes={routes} 
         open={open} 
         close={close} 
@@ -82,7 +80,6 @@ export default function Panel({ src, href, title }) {
         notify={notify}
       />
       <PanelLeft 
-        classes={classes}
         src={src} 
         href={href} 
         title={title}
@@ -91,7 +88,6 @@ export default function Panel({ src, href, title }) {
         toggle={toggle} 
       />
       <PanelRight 
-        classes={classes}
         ref={ref} 
         screens={history} 
         close={close} 

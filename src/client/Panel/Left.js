@@ -12,11 +12,11 @@ import styles from './styles'
 //main component
 export default function PanelLeft(props) {
   //expand props
-  const { classes, src, href, title, menu, open, toggle } = props
-  const classNames = classes || styles()
+  const { src, href, title, menu, open, toggle } = props
+  const classes = styles()
   //render
   return (
-    <nav className={classNames.panelLeft}>
+    <nav className={classes.panelLeft}>
       <Hidden mdUp implementation="css">
         <Drawer
           variant="temporary"
@@ -25,18 +25,18 @@ export default function PanelLeft(props) {
           onClose={toggle}
           ModalProps={{ keepMounted: true }}
           classes={{
-            paper: classNames.panelLeftDrawer,
+            paper: classes.panelLeftDrawer,
           }}
         >
-          <header className={classNames.panelLeftHeader}>
+          <header className={classes.panelLeftHeader}>
             <button 
               type="button" 
-              className={classNames.panelLeftHeaderBack} 
+              className={classes.panelLeftHeaderBack} 
               onClick={toggle}
             >
               <ChevronLeftIcon />
             </button>
-            <a className={classNames.panelLeftHeaderLink} href={href}>
+            <a className={classes.panelLeftHeaderLink} href={href}>
               {src && <img 
                 src={src} 
                 height="20" 
@@ -53,12 +53,12 @@ export default function PanelLeft(props) {
         <Drawer 
           variant="permanent" 
           classes={{
-            paper: classNames.panelLeftDrawer,
+            paper: classes.panelLeftDrawer,
           }}
           open
         >
-          <header className={classNames.panelLeftHeader}>
-            <a className={classNames.panelLeftHeaderLink} href={href}>
+          <header className={classes.panelLeftHeader}>
+            <a className={classes.panelLeftHeaderLink} href={href}>
               {src && <img 
                 src={src} 
                 height="20" 

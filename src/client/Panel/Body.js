@@ -6,8 +6,6 @@ import styles from './styles'
 //main component
 export default function PanelBody(props) {
   const { 
-    //css classes
-    classes,
     //array of bread crumbs
     crumbs, 
     //array of route information
@@ -38,10 +36,10 @@ export default function PanelBody(props) {
       />
     </Route>
   ))
-  const classNames = classes || styles()
+  const classes = styles()
   //render
   return (
-    <main className={classNames.panelBody}>
+    <main className={classes.panelBody}>
       <Switch>{cases}</Switch>
     </main>
   )

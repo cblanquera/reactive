@@ -39,13 +39,13 @@ function getBody(children) {
 
 //main component
 export default function Table(props) {
-  const classNames = props.classes || styles()
+  const classes = styles()
   const head = getHead(props.children || [])
   const body = getBody(props.children || [])
 
   return (
-    <div className={classNames.tableScroll}>
-      <table className={classNames.table}>
+    <div className={classes.tableScroll}>
+      <table className={classes.table}>
         <thead><tr>{head}</tr></thead>
         <tbody>{body}</tbody>
       </table>

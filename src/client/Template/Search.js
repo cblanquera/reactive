@@ -18,7 +18,7 @@ import styles from './styles'
 
 //main component
 export default function TemplateSearch(props) {
-  const { classes, backward, forward, open, crumbs, notify } = props
+  const { backward, forward, open, crumbs, notify } = props
   //define listeners
   const form = () => open(
     <Form 
@@ -36,7 +36,7 @@ export default function TemplateSearch(props) {
     />
   )
   //make classes
-  const classNames = classes || styles()
+  const classes = styles()
   //get rows
   const [rows, setRows] = useState(false)
   //only on first mount
@@ -50,9 +50,9 @@ export default function TemplateSearch(props) {
   //render
   return (
     <>
-      <header className={classNames.searchHeader}>
-        <h1 className={classNames.searchHeaderTitle}>Template One</h1>
-        <div className={classNames.searchHeaderLinks}>
+      <header className={classes.searchHeader}>
+        <h1 className={classes.searchHeaderTitle}>Template One</h1>
+        <div className={classes.searchHeaderLinks}>
           <Button 
             variant="outlined" 
             color="secondary" 

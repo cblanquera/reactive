@@ -11,20 +11,20 @@ import Crumbs from '../Crumbs'
 import styles from './styles'
 
 //main component
-export default function PanelHead({ classes, toggle, crumbs }) {
-  const classNames = classes || styles()
+export default function PanelHead({ toggle, crumbs }) {
+  const classes = styles()
   //render
   return (
     <div>
       <AppBar 
         position="fixed"
-        className={classNames.panelHeadAppbar}
+        className={classes.panelHeadAppbar}
       >
         <Toolbar>
           <IconButton 
             color="inherit" 
             onClick={toggle}
-            className={classNames.panelHeadMenu}
+            className={classes.panelHeadMenu}
           >
             <MenuIcon />
           </IconButton>

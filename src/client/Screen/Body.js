@@ -6,7 +6,7 @@ import styles from './styles'
 //main component
 export default function ScreenBody(props) {
   //classes
-  const classNames = props.classes || styles()
+  const classes = styles()
   //styles
   const style = {}
   if ('withFoot' in props) {
@@ -22,7 +22,7 @@ export default function ScreenBody(props) {
   }
   //render
   return (
-    <section className={classNames.screenBody} style={style}>
+    <section className={classes.screenBody} style={style}>
       {props.children}
     </section>
   )
