@@ -1,10 +1,10 @@
 import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 
-const theme = createTheme({ 
+const dark = createTheme({ 
   palette: { 
     type: 'dark',
-    primary: { main: '#F43A80' },
-    secondary: { main: '#1474FC' },
+    primary: { main: '#1474FC' },
+    secondary: { main: '#F43A80' },
     error: { main: '#DC3545' },
     warning: { main: '#FFC107' },
     success: { main: '#28A745' },
@@ -19,4 +19,16 @@ const theme = createTheme({
   } 
 })
 
-export { theme, ThemeProvider } 
+const light = createTheme({ 
+  palette: { 
+    type: 'light',
+    background: { 
+      default: '#FFFFFF',
+      paper: '#FCFCFC',
+      inset: '#EFEFEF',
+      accent: '#F0F0F0'
+    },
+  } 
+})
+
+export { dark, light, ThemeProvider } 

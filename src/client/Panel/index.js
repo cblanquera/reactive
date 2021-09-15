@@ -1,5 +1,5 @@
 //vendor imports
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 //local imports
 import menu from '../menu'
@@ -30,11 +30,11 @@ function getRoutes(menu) {
 }
 
 //main component
-export default function Panel({ src, href, title }) {
+export default function Panel({ src, href, title, ambiance }) {
   //states
-  const [ menuShown, showMenu ] = React.useState(false)
-  const [ crumbs, setCrumbs ] = React.useState([])
-  const [ notification, setNotification ] = React.useState({})
+  const [ menuShown, showMenu ] = useState(false)
+  const [ crumbs, setCrumbs ] = useState([])
+  const [ notification, setNotification ] = useState({})
   const { open, close, forward, backward } = screens.useDispatch()
   //actions
   const toggle = () => showMenu(!menuShown)
@@ -67,6 +67,7 @@ export default function Panel({ src, href, title }) {
     <section>
       <CssBaseline />
       <PanelHead 
+        ambiance={ambiance}
         toggle={toggle} 
         crumbs={crumbs} 
       />

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   crumbsLink: {
     alignItems: 'center',
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     display: 'inline-flex',
     textDecoration: 'none'
   },

@@ -37,7 +37,7 @@ export default function TemplateForm({ backward }) {
         <Button 
           className={classes.formPublish} 
           variant="contained" 
-          color="secondary"
+          color="primary"
           startIcon={<CheckIcon />}
         >
           Publish

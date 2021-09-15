@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 export default makeStyles((theme) => {
   const styles = {
     panelHeadAppbar: {
-      borderBottom: '1px solid rgba(0, 0, 0, 0.40)',
+      backgroundColor: '#AAAAAA',
+      borderBottom: '1px solid rgba(0, 0, 0, 0.10)',
       boxShadow: 'none',
       [theme.breakpoints.up('md')]: {
         width: `calc(100% - 240px)`,
@@ -41,12 +42,12 @@ export default makeStyles((theme) => {
       },
     },
     panelLeftDrawer: {
-      borderRight: '1px solid rgba(0,0,0,.40)',
+      borderRight: '1px solid rgba(0, 0, 0, 0.10)',
       width: 240,
     },
     panelLeftHeader: {
       backgroundColor: theme.palette.background.inset,
-      borderBottom: '1px solid rgba(0,0,0,.40)',
+      borderBottom: '1px solid rgba(0, 0, 0, 0.10)',
       paddingBottom: 17,
       paddingLeft: 10,
       paddingRight: 10,
@@ -65,12 +66,17 @@ export default makeStyles((theme) => {
       background: 0,
       border: 0,
       borderRadius: 0,
-      color: theme.palette.secondary.main,
+      color: theme.palette.primary.main,
       display: 'block',
       cursor: 'pointer',
       float: 'right',
       height: 30,
       padding: 0
+    },
+    panelLeftMenuItem: {
+      borderBottom: '1px solid rgba(0, 0, 0, 0.10)',
+      paddingBottom: 15,
+      paddingTop: 15
     },
     panelRight: {
       overflowY: 'hidden',
@@ -94,6 +100,10 @@ export default makeStyles((theme) => {
 
   if (theme.palette.type === 'dark') {
     styles.panelHeadAppbar.backgroundColor = '#2F343F'
+    styles.panelHeadAppbar.borderBottom = '1px solid rgba(0, 0, 0, 0.40)'
+    styles.panelLeftDrawer.borderRight = '1px solid rgba(0, 0, 0, 0.40)'
+    styles.panelLeftHeader.borderBottom = '1px solid rgba(0, 0, 0, 0.40)'
+    styles.panelLeftMenuItem.borderBottom = '1px solid rgba(0, 0, 0, 0.25)'
   }
 
   return styles

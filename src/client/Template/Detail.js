@@ -81,7 +81,7 @@ export default function TemplateDetail(props) {
         <Button 
           className={classes.detailEdit} 
           variant="contained" 
-          color="secondary"
+          color="primary"
           startIcon={<EditIcon />}
           onClick={form}
         >
@@ -90,7 +90,7 @@ export default function TemplateDetail(props) {
         <Button 
           className={classes.detailCopy} 
           variant="outlined" 
-          color="secondary"
+          color="primary"
           startIcon={<FileCopyIcon />}
         >
           Copy
@@ -98,7 +98,7 @@ export default function TemplateDetail(props) {
         <Button 
           className={classes.detailRemove} 
           variant="outlined" 
-          color="primary"
+          color="secondary"
           startIcon={<CloseIcon />}
         >
           Remove

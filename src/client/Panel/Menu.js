@@ -11,15 +11,12 @@ import ListItemText from '@material-ui/core/ListItemText'
 //vendor icons
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+//self imports
+import styles from './styles'
 
 //local components
-function MenuItem({ item, level }) {
+function MenuItem({ item, level, classes }) {
   const icon = item.icon? <item.icon />: null
-  const style = {
-    borderBottom: '1px solid rgba(0, 0, 0, 0.25)',
-    paddingBottom: 15,
-    paddingTop: 15
-  }
   if (!item.children) {
     if (item.href) {
       //see: https://material-ui.com/guides/composition/#caveat-with-inlining
@@ -31,7 +28,11 @@ function MenuItem({ item, level }) {
       )
       return (
         <li>
-          <ListItem button component={MenuLink} style={style}>
+          <ListItem 
+            button 
+            component={MenuLink} 
+            className={classes.panelLeftMenuItem}
+          >
             <ListItemIcon>{icon}</ListItemIcon>
             <ListItemText primary={item.title} />
           </ListItem>
@@ -41,7 +42,7 @@ function MenuItem({ item, level }) {
 
     return (
       <li>
-        <ListItem button style={style}>
+        <ListItem button className={classes.panelLeftMenuItem}>
           <ListItemIcon>{icon}</ListItemIcon>
           <ListItemText primary={item.title} />
         </ListItem>
@@ -55,7 +56,11 @@ function MenuItem({ item, level }) {
 
   return (
     <li>
-      <ListItem button onClick={toggle} style={style}>
+      <ListItem 
+        button 
+        onClick={toggle} 
+        className={classes.panelLeftMenuItem}
+      >
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={item.title} />
         {chevron}
@@ -69,12 +74,13 @@ function MenuItem({ item, level }) {
 
 //main component
 export default function Menu({items, level = 0}) {
+  const classes = styles()
   items = items.map((item, key) => (
-    <MenuItem key={key} item={item} level={level} />
+    <MenuItem key={key} item={item} level={level} classes={classes} />
   ))
 
   const style = { 
-    backgroundColor: `rgb(0, 0, 0, ${level / 6})`,
+    backgroundColor: `rgb(0, 0, 0, ${level / 12})`,
     padding: 0
   }
   return <List style={style}>{items}</List>

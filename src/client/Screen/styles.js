@@ -26,7 +26,7 @@ export default makeStyles((theme) => ({
   screenHeadBack: {
     backgroundColor: 'transparent',
     borderWidth: 0,
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     cursor: 'pointer',
     display: 'inline-block',
     padding: 0

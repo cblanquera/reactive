@@ -55,7 +55,7 @@ export default function TemplateSearch(props) {
         <div className={classes.searchHeaderLinks}>
           <Button 
             variant="outlined" 
-            color="secondary" 
+            color="primary" 
             onClick={form}
             fullWidth={true}
             startIcon={<AddIcon />}
