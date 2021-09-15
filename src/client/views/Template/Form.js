@@ -7,6 +7,10 @@ import TextField from '@material-ui/core/TextField'
 import CheckIcon from '@material-ui/icons/Check'
 //local imports
 import Screen from '../../components/Screen'
+import FileField from '../../components/Fields/FileField'
+import TagListField from '../../components/Fields/TagListField'
+import TextListField from '../../components/Fields/TextListField'
+import MetadataField from '../../components/Fields/MetadataField'
 //self imports
 import styles from './styles'
 
@@ -31,6 +35,34 @@ export default function TemplateForm({ backward }) {
           defaultValue="Hello World"
           helperText="Incorrect entry."
           margin="normal"
+        />
+        <TagListField 
+          label="Tags Example"
+          name="tags" 
+          value={['foo', 'bar']} 
+        />
+        <TextListField 
+          label="Text List Example"
+          addLabel="Add Item"
+          margin="normal"
+          name="names" 
+          value={['foo', 'bar']} 
+        />
+        <MetadataField 
+          label="Metadata Example"
+          addLabel="Add Item"
+          margin="normal"
+          name="names" 
+          value={{ foo: 'bar', bar: 'foo' }} 
+        />
+        <FileField 
+          label="File Example"
+          addLabel="Upload File"
+          margin="normal"
+          limit={3}
+          accept="image/*"
+          name="file" 
+          value={'https://randomuser.me/api/portraits/women/12.jpg'} 
         />
       </Screen.Body>
       <Screen.Foot>

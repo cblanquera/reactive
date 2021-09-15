@@ -20,6 +20,15 @@ export default makeStyles((theme) => ({
     position: 'relative',
     textAlign: 'left'
   },
+  tableFoot: {
+    backgroundColor: theme.palette.background.inset,
+    paddingBottom: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 20,
+    position: 'relative',
+    textAlign: 'left'
+  },
   tableRow: {
     backgroundColor: theme.palette.background.paper
   },
