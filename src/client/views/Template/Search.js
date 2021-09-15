@@ -7,7 +7,7 @@ import Pagination from '@material-ui/lab/Pagination'
 import AddIcon from '@material-ui/icons/Add'
 import CameraIcon from '@material-ui/icons/Camera'
 //local imports
-import { Table, Thead } from '../Table'
+import { Table, Thead } from '../../components/Table'
 //self imports
 import SearchForm from './Search/Form'
 import SearchRows from './Search/Rows'

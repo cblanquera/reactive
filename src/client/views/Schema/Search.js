@@ -5,7 +5,7 @@ import StorageIcon from '@material-ui/icons/Storage'
 import { makeStyles } from '@material-ui/core/styles'
 
 import Form from './Form'
-import { Table, Thead, Trow,  Tcol} from '../Table'
+import { Table, Thead, Trow,  Tcol} from '../../components/Table'
 
 const useStyles = makeStyles((theme) => ({
   header: {

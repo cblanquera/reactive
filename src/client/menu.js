@@ -4,8 +4,8 @@ import StorageIcon from '@material-ui/icons/Storage'
 import SettingsIcon from '@material-ui/icons/Settings'
 import LocalCafeIcon from '@material-ui/icons/LocalCafe'
 
-import Schema from './Schema'
-import Template from './Template'
+import Schema from './views/Schema'
+import Template from './views/Template'
 
 export default [
   {

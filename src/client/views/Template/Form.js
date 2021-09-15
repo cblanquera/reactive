@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField'
 //vendor icons
 import CheckIcon from '@material-ui/icons/Check'
 //local imports
-import Screen from '../Screen'
+import Screen from '../../components/Screen'
 //self imports
 import styles from './styles'
 

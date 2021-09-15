@@ -2,10 +2,9 @@
 import React, { useState, useEffect } from 'react'
 import { Provider } from 'react-redux'
 //local imports
-import Panel from './Panel'
-//self imports
-import screens from './screens'
-import { light, dark, ThemeProvider } from './theme'
+import Panel from './layouts/Panel'
+import screens from './settings/screens'
+import { light, dark, ThemeProvider } from './settings/theme'
 
 export default function App() {
   const [ambiance, setAmbiance] = useState(false)

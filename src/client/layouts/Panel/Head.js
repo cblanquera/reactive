@@ -11,8 +11,8 @@ import Brightness3Icon from '@material-ui/icons/Brightness3'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import NotificationsIcon from '@material-ui/icons/Notifications'
-//local imports
-import Crumbs from '../Crumbs'
+//self imports
+import Crumbs from './Crumbs'
 import styles from './styles'
 
 //main component

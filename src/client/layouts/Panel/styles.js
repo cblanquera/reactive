@@ -1,3 +1,4 @@
+//vendor imports
 import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => {
@@ -16,6 +17,31 @@ export default makeStyles((theme) => {
       [theme.breakpoints.up('md')]: {
         display: 'none',
       }
+    },
+    panelHeadCrumbs: {
+      alignItems: 'center',
+      backgroundColor: theme.palette.background.inset,
+      borderTop: '1px solid rgba(0, 0, 0, 0.40)',
+      color: theme.palette.text.primary,
+      display: 'flex',
+      padding: 10
+    },
+    panelHeadCrumbsLink: {
+      alignItems: 'center',
+      color: theme.palette.primary.main,
+      display: 'inline-flex',
+      textDecoration: 'none'
+    },
+    panelHeadCrumbsItem: {
+      alignItems: 'center',
+      display: 'inline-flex'
+    },
+    panelHeadCrumbsIcon: {
+      fontSize: 16,
+      marginRight: 5
+    },
+    panelHeadCrumbsSep: {
+      color: '#AAAAAA'
     },
     panelBody: {
       bottom: 0,

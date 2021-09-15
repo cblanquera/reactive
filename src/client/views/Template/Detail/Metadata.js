@@ -1,7 +1,7 @@
 //vendor imports
 import React from 'react'
 //local imports
-import { Table, Trow, Tcol } from '../../Table'
+import { Table, Trow, Tcol } from '../../../components/Table'
 
 export default function Metadata({ row }) {
   return typeof row === 'object' ? (

@@ -4,7 +4,7 @@ import React from 'react'
 import IconButton from '@material-ui/core/IconButton'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 //local imports
-import { Trow,  Tcol} from '../../Table'
+import { Trow,  Tcol} from '../../../components/Table'
 
 //main component
 export default function SearchRows({rows, detail}) {

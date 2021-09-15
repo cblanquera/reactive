@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import Divider from '@material-ui/core/Divider'
 import TextField from '@material-ui/core/TextField'
 
 import CloseIcon from '@material-ui/icons/Close'
@@ -9,7 +8,7 @@ import FileCopyIcon from '@material-ui/icons/FileCopy'
 
 import { makeStyles } from '@material-ui/core/styles'
 
-import Screen from '../Screen'
+import Screen from '../../components/Screen'
 
 const useStyles = makeStyles((theme) => ({
   publish: {

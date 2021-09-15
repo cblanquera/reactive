@@ -1,9 +1,10 @@
+//vendor imports
 import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { useSelector, useDispatch } from 'react-redux'
 import thunk from 'redux-thunk'
-
-import Screen from './Screen'
+//local imports
+import Screen from '../components/Screen'
 
 const initialState = []
 const ADD = Symbol('ADD')

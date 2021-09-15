@@ -9,8 +9,8 @@ import EditIcon from '@material-ui/icons/Edit'
 import CloseIcon from '@material-ui/icons/Close'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
 //local imports
-import Screen from '../Screen'
-import { Table, Thead } from '../Table'
+import Screen from '../../components/Screen'
+import { Table, Thead } from '../../components/Table'
 //self imports
 import Form from './Form'
 import SearchRows from './Search/Rows'

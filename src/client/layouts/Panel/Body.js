@@ -1,6 +1,8 @@
 //vendor imports
 import React from 'react'
+//vendor components
 import { Switch, Route } from 'react-router-dom'
+//self imports
 import styles from './styles'
 
 //main component

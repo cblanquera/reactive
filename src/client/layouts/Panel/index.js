@@ -2,9 +2,8 @@
 import React, { useState, useEffect } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 //local imports
-import menu from '../menu'
-import screens from '../screens'
-
+import menu from '../../menu'
+import screens from '../../settings/screens'
 //self imports
 import Notify from './Notify'
 import PanelHead from './Head'
