@@ -1,5 +1,6 @@
 //vendor components
 import React from 'react'
+import PropTypes from 'prop-types'
 //self imports
 import styles from './styles'
 
@@ -7,9 +8,19 @@ import styles from './styles'
 export default function TableRow(props) {
   const classes = styles()
   
-  const className = 'stripe' in props && props.stripe
+  const className = props.stripe
     ? classes.tableRowStriped
     : classes.tableRow
 
-  return <tr className={className}>{props.children}</tr>
+  return <tr className={className} style={props.style}>
+    {props.children}
+  </tr>
+}
+
+TableRow.propTypes = {
+  stripe: PropTypes.bool
+}
+
+TableRow.defaultProps = {
+  stripe: false
 }

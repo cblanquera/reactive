@@ -105,6 +105,10 @@ export default function FileField(props) {
   const shrink = !!filtered.length
   const exceeded = filtered.length >= safeLimit
   
+  const styles = {
+    foot: { backgroundColor: 'transparent', padding: 0 },
+    button: { width: '100%' }
+  }
 
   return (
     <FormControl margin={margin}>
@@ -113,12 +117,13 @@ export default function FileField(props) {
       </InputLabel>}
       <Table style={{ marginTop: shrink ? 30 : 50 }}>
         {rows}
-        {!exceeded && <Tfoot colSpan={3}>
+        {!exceeded && <Tfoot style={styles.foot} colSpan={3}>
           <Button 
             component="label"
             variant="outlined" 
             color="secondary"
             startIcon={<AddIcon />}
+            style={styles.button}
           >
             {addLabel || 'Add File'}
             <input 

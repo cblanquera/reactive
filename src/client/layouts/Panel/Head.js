@@ -40,12 +40,15 @@ export default function PanelHead({ toggle, crumbs, ambiance }) {
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit" onClick={ambiance.changeAmbiance}>
+          {ambiance && <IconButton 
+            color="inherit" 
+            onClick={ambiance.changeAmbiance}
+          >
             {ambiance.ambiance
               ? <Brightness3Icon /> 
               : <Brightness7Icon />
             }
-          </IconButton>
+          </IconButton>}
           <IconButton color="inherit" >
             <AccountCircleIcon />
           </IconButton>

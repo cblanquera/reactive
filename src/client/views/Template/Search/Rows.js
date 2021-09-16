@@ -13,7 +13,7 @@ export default function SearchRows({rows, detail}) {
   }
 
   const children = rows.map((row, key) => (
-    <Trow key={key} stripe={key % 2}>
+    <Trow key={key} stripe={key % 2 === 1}>
       <Tcol stickyLeft>{row.id}</Tcol>
       <Tcol><img src={row.image} width={50} height={50} /></Tcol>
       <Tcol wrap1>{row.name}</Tcol>

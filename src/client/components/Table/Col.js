@@ -1,5 +1,6 @@
 //vendor imports
 import React from 'react'
+import PropTypes from 'prop-types'
 //self imports
 import styles from './styles'
 
@@ -18,41 +19,35 @@ export default function TableCol(props) {
   const classes = styles()
   //styles
   const style = {}
-  if ('stickyTop' in props) {
-    style.position = 'sticky'
-    style.zIndex = 1
-    style.top = 0
-  } 
-  if ('stickyBottom' in props) {
+  if (props.stickyBottom) {
     style.position = 'sticky'
     style.zIndex = 1
     style.bottom = 0
   } 
-  if ('stickyLeft' in props) {
+  if (props.stickyLeft) {
     style.position = 'sticky'
     style.zIndex = 2
     style.left = 0
   }
-  if ('stickyRight' in props) {
+  if (props.stickyRight) {
     style.position = 'sticky'
     style.zIndex = 2
     style.right = 0
   }
-  if ('noWrap' in props) {
+  if (props.stickyTop) {
+    style.position = 'sticky'
+    style.zIndex = 1
+    style.top = 0
+  } 
+  if (props.noWrap) {
     style.whiteSpace = 'nowrap'
   }
-  if (typeof props.style === 'object') {
+  if (props.style && typeof props.style === 'object') {
     Object.assign(style, props.style)
   }
 
   //props
   const extras = {}
-  if ('rowspan' in props) {
-    extras.rowSpan = props.rowspan
-  }
-  if ('colspan' in props) {
-    extras.colSpan = props.colspan
-  }
   if ('rowSpan' in props) {
     extras.rowSpan = props.rowSpan
   }
@@ -61,15 +56,15 @@ export default function TableCol(props) {
   }
 
   let rule = null
-  if ('wrap1' in props) {
+  if (props.wrap1) {
     rule = <Rule width={100} />
-  } else if ('wrap2' in props) {
+  } else if (props.wrap2) {
     rule = <Rule width={200} />
-  } else if ('wrap3' in props) {
+  } else if (props.wrap3) {
     rule = <Rule width={300} />
-  } else if ('wrap4' in props) {
+  } else if (props.wrap4) {
     rule = <Rule width={400} />
-  } else if ('wrap5' in props) {
+  } else if (props.wrap5) {
     rule = <Rule width={500} />
   } 
   return (
@@ -82,4 +77,32 @@ export default function TableCol(props) {
       {rule}
     </td>
   )
+}
+
+TableCol.propTypes = {
+  colSpan: PropTypes.number,
+  noWrap: PropTypes.bool,
+  rowSpan: PropTypes.number,
+  stickyBottom: PropTypes.bool,
+  stickyLeft: PropTypes.bool,
+  stickyRight: PropTypes.bool,
+  stickyTop: PropTypes.bool,
+  wrap1: PropTypes.bool,
+  wrap2: PropTypes.bool,
+  wrap3: PropTypes.bool,
+  wrap4: PropTypes.bool,
+  wrap5: PropTypes.bool
+}
+
+TableCol.defaultProps = {
+  noWrap: false,
+  stickyBottom: false,
+  stickyLeft: false,
+  stickyRight: false,
+  stickyTop: false,
+  wrap1: false,
+  wrap2: false,
+  wrap3: false,
+  wrap4: false,
+  wrap5: false
 }

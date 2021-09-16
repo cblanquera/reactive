@@ -1,5 +1,6 @@
 //vendor imports
 import React from 'react'
+import PropTypes from 'prop-types'
 //self imports
 import styles from './styles'
 
@@ -9,25 +10,25 @@ export default function TableHead(props) {
   const classes = styles()
   //styles
   const style = {}
-  if ('stickyTop' in props) {
-    style.position = 'sticky'
-    style.zIndex = 3
-    style.top = 0
-  } 
-  if ('stickyLeft' in props) {
+  if (props.stickyLeft) {
     style.position = 'sticky'
     style.zIndex = 4
     style.left = 0
-  } 
-  if ('stickyRight' in props) {
+  }
+  if (props.stickyRight) {
     style.position = 'sticky'
     style.zIndex = 4
     style.right = 0
   }
-  if ('noWrap' in props) {
+  if (props.stickyTop) {
+    style.position = 'sticky'
+    style.zIndex = 3
+    style.top = 0
+  } 
+  if (props.noWrap) {
     style.whiteSpace = 'nowrap'
   }
-  if (typeof props.style === 'object') {
+  if (props.style && typeof props.style === 'object') {
     Object.assign(style, props.style)
   }
 
@@ -54,4 +55,19 @@ export default function TableHead(props) {
       {props.children}
     </th>
   )
+}
+
+TableHead.propTypes = {
+  colSpan: PropTypes.number,
+  noWrap: PropTypes.bool,
+  rowSpan: PropTypes.number,
+  stickyLeft: PropTypes.bool,
+  stickyRight: PropTypes.bool,
+  stickyTop: PropTypes.bool
+}
+
+TableHead.defaultProps = {
+  stickyLeft: false,
+  stickyRight: false,
+  stickyTop: false
 }

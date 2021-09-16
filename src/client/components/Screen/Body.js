@@ -1,5 +1,6 @@
 //vendor imports
 import React from 'react'
+import PropTypes from 'prop-types'
 //self imports
 import styles from './styles'
 
@@ -9,15 +10,13 @@ export default function ScreenBody(props) {
   const classes = styles()
   //styles
   const style = {}
-  if ('withFoot' in props) {
+  if (props.withFoot) {
     style.bottom = 57
-  }
-
-  if ('withFoot2' in props) {
+  } else if (props.withFoot2) {
     style.bottom = 93
   }
 
-  if (typeof props.style === 'object') {
+  if (props.style && typeof props.style === 'object') {
     Object.assign(style, props.style)
   }
   //render
@@ -26,4 +25,14 @@ export default function ScreenBody(props) {
       {props.children}
     </section>
   )
+}
+
+ScreenBody.propTypes = {
+  withFoot: PropTypes.bool,
+  withFoot2: PropTypes.bool
+}
+
+ScreenBody.defaultProps = {
+  withFoot: false,
+  withFoot2: false
 }

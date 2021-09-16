@@ -1,5 +1,6 @@
 //vendor imports
 import React from 'react'
+import PropTypes from 'prop-types'
 //self imports
 import styles from './styles'
 
@@ -9,36 +10,30 @@ export default function TableFoot(props) {
   const classes = styles()
   //styles
   const style = {}
-  if ('stickyBottom' in props) {
+  if (props.stickyBottom) {
     style.position = 'sticky'
     style.zIndex = 3
     style.bottom = 0
   } 
-  if ('stickyLeft' in props) {
+  if (props.stickyLeft) {
     style.position = 'sticky'
     style.zIndex = 4
     style.left = 0
-  } 
-  if ('stickyRight' in props) {
+  }
+  if (props.stickyRight) {
     style.position = 'sticky'
-    style.zIndex = 4
+    style.zIndex = 2
     style.right = 0
   }
-  if ('noWrap' in props) {
+  if (props.noWrap) {
     style.whiteSpace = 'nowrap'
   }
-  if (typeof props.style === 'object') {
+  if (props.style && typeof props.style === 'object') {
     Object.assign(style, props.style)
   }
 
   //props
   const extras = {}
-  if ('rowspan' in props) {
-    extras.rowSpan = props.rowspan
-  }
-  if ('colspan' in props) {
-    extras.colSpan = props.colspan
-  }
   if ('rowSpan' in props) {
     extras.rowSpan = props.rowSpan
   }
@@ -54,4 +49,19 @@ export default function TableFoot(props) {
       {props.children}
     </th>
   )
+}
+
+TableFoot.propTypes = {
+  colSpan: PropTypes.number,
+  noWrap: PropTypes.bool,
+  rowSpan: PropTypes.number,
+  stickyBottom: PropTypes.bool,
+  stickyLeft: PropTypes.bool,
+  stickyRight: PropTypes.bool
+}
+
+TableFoot.defaultProps = {
+  stickyBottom: false,
+  stickyLeft: false,
+  stickyRight: false
 }

@@ -1,5 +1,6 @@
 //vendor imports
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import CssBaseline from '@material-ui/core/CssBaseline'
 //local imports
 import menu from '../../menu'
@@ -99,4 +100,10 @@ export default function Panel({ src, href, title, ambiance }) {
       />
     </section>
   )
+}
+
+Panel.propTypes = {
+  src: PropTypes.string,
+  href: PropTypes.string,
+  title: PropTypes.string
 }

@@ -8,6 +8,8 @@ import CheckIcon from '@material-ui/icons/Check'
 //local imports
 import Screen from '../../components/Screen'
 import FileField from '../../components/Fields/FileField'
+import ColorField from '../../components/Fields/ColorField'
+import MaskField from '../../components/Fields/MaskField'
 import TagListField from '../../components/Fields/TagListField'
 import TextListField from '../../components/Fields/TextListField'
 import MetadataField from '../../components/Fields/MetadataField'
@@ -63,6 +65,18 @@ export default function TemplateForm({ backward }) {
           accept="image/*"
           name="file" 
           value={'https://randomuser.me/api/portraits/women/12.jpg'} 
+        />
+        <ColorField 
+          margin="normal" 
+          label="Color Example" 
+          name="color" 
+          value="#FF00FF" 
+        />
+        <MaskField 
+          margin="normal" 
+          label="Masked Example" 
+          name="mask" 
+          mask="(999) 999-9999"
         />
       </Screen.Body>
       <Screen.Foot>
