@@ -41,7 +41,6 @@
     "material-ui-color": "^1.2.0",
     "material-ui-markdown-editor": "^1.0.10",
     "react-ace": "^9.4.3",
-    "react-number-format": "^4.7.3",
     "redux": "^4.1.1",
     "slate": "^0.66.1",
     "slate-react": "^0.66.1"

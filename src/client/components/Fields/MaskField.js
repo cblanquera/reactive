@@ -21,13 +21,17 @@ function MaskInput({ inputRef, mask, ...other }) {
 }
 
 export default function MaskField({ name, value, label, mask }) {
+  const inputProps = { 
+    inputComponent: MaskInput,
+    inputProps: { mask }
+  }
+
   return (
     <TextField
       label={label}
       value={value}
       name={name}
-      inputProps={{ mask }}
-      InputProps={{ inputComponent: MaskInput }}
+      InputProps={inputProps}
     />
   )
 }

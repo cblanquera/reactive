@@ -10,6 +10,7 @@ import Screen from '../../components/Screen'
 import FileField from '../../components/Fields/FileField'
 import ColorField from '../../components/Fields/ColorField'
 import MaskField from '../../components/Fields/MaskField'
+import NumberField from '../../components/Fields/NumberField'
 import TagListField from '../../components/Fields/TagListField'
 import TextListField from '../../components/Fields/TextListField'
 import MetadataField from '../../components/Fields/MetadataField'
@@ -77,6 +78,16 @@ export default function TemplateForm({ backward }) {
           label="Masked Example" 
           name="mask" 
           mask="(999) 999-9999"
+        />
+        <NumberField 
+          margin="normal" 
+          label="Number Example" 
+          name="number" 
+          decimals={2}
+          decimal={'.'}
+          separator={','}
+          min={-100}
+          max={1000000}
         />
       </Screen.Body>
       <Screen.Foot>
