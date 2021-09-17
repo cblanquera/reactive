@@ -2,9 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import CssBaseline from '@material-ui/core/CssBaseline'
-//local imports
-import menu from '../../menu'
-import screens from '../../settings/screens'
 //self imports
 import Notify from './Notify'
 import PanelHead from './Head'
@@ -13,24 +10,9 @@ import PanelLeft from './Left'
 import PanelRight from './Right'
 import styles from './styles'
 
-//helpers
-function getRoutes(menu) {
-  const routes = []
-  for (const item of menu) {
-    if (item.href && item.body) {
-      routes.push({ href: item.href, body: item.body })
-    }
-
-    if (Array.isArray(item.children)) {
-      routes.push.apply(routes, getRoutes(item.children))
-    }
-  }
-
-  return routes
-}
-
 //main component
-export default function Panel({ src, href, title, ambiance }) {
+export default function Panel(props) {
+  const { src, href, title, menu, routes, screens, ambiance } = props
   //states
   const [ menuShown, showMenu ] = useState(false)
   const [ crumbs, setCrumbs ] = useState([])
@@ -42,7 +24,6 @@ export default function Panel({ src, href, title, ambiance }) {
   const clear = () => setNotification({})
   //props
   const classes = styles()
-  const routes = getRoutes(menu)
   const history = screens.get()
   //this is for the right panel
   const ref = React.createRef()

@@ -24,11 +24,11 @@ export default function PanelBody(props) {
     notify 
   } = props
   //add a home route (TODO)
-  routes.push({ href: '/', body: () => { return <h1>Hello</h1> } })
+  routes.push({ href: '/', view: () => <h1>Hello</h1> })
   //build the switch cases
-  const cases = routes.map((route, key) => (
+  const cases = routes.filter(route => !!route.view).map((route, key) => (
     <Route key={key} path={route.href}>
-      <route.body
+      <route.view
         open={open} 
         close={close} 
         forward={forward} 

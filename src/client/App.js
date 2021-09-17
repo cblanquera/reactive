@@ -3,8 +3,12 @@ import React, { useState, useEffect } from 'react'
 import { Provider } from 'react-redux'
 //local imports
 import Panel from './layouts/Panel'
-import screens from './settings/screens'
-import { light, dark, ThemeProvider } from './settings/theme'
+//config imports
+import menu from '../config/menu'
+import routes from '../config/routes'
+import screens from '../config/screens'
+import settings from '../config/settings'
+import { light, dark, ThemeProvider } from '../config/theme'
 
 export default function App() {
   const [ambiance, setAmbiance] = useState(false)
@@ -21,7 +25,15 @@ export default function App() {
   return (
     <Provider store={screens.store}>
       <ThemeProvider theme={ambiance? dark: light}>
-        <Panel title="Reactive" href="/" ambiance={ambianceState} />
+        <Panel 
+          title={settings.title} 
+          href={settings.href} 
+          src={settings.src}
+          menu={menu}
+          routes={routes} 
+          screens={screens}
+          ambiance={ambianceState} 
+        />
       </ThemeProvider>
     </Provider>
   )

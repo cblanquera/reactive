@@ -2,14 +2,14 @@ const path = require('path')
 const webpack = require('webpack')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
-const cwd = path.resolve(__dirname, '../../..')
+const cwd = path.resolve(__dirname, '../..')
 
 const config = {
   mode: 'development',
   entry: {
     main: [
       'webpack-hot-middleware/client', 
-      path.resolve(cwd, 'src/develop/client.js')
+      path.resolve(cwd, 'develop/client.js')
     ]
   },
   output: {
