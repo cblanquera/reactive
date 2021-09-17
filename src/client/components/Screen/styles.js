@@ -68,4 +68,4 @@ export default makeStyles((theme) => ({
     right: 0,
     borderTop: `6px solid ${theme.palette.background.inset}`
   }
-}))
+}), { name: 'ReactiveComponentScreen' })

@@ -133,4 +133,4 @@ export default makeStyles((theme) => {
   }
 
   return styles
-})
+}, { name: 'ReactiveLayoutPanel' })

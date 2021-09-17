@@ -51,4 +51,4 @@ export default makeStyles((theme) => ({
   detailRemove: { 
     width: 'calc(50% - 2.5px)' 
   }
-}))
+}), { name: 'ReactiveViewTemplate' })

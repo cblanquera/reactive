@@ -10,18 +10,8 @@ import FormControl from '@material-ui/core/FormControl'
 //vendor icons
 import AddIcon from '@material-ui/icons/Add'
 import CloseIcon from '@material-ui/icons/Close'
-
-const styles = makeStyles((theme) => ({
-  textListDisplay: {
-    marginTop: 16
-  },
-  textListDisplayInput: {
-    width: 'calc(100% - 30px)'
-  },
-  textListRemove: {
-    marginTop: 2
-  }
-}))
+//self imports
+import styles from './styles'
 
 function ItemField({ classes, name, value, index, values, set }) {
   const update = () => {
@@ -43,17 +33,17 @@ function ItemField({ classes, name, value, index, values, set }) {
   const ref = React.createRef()
 
   return (
-    <div className={classes.textListDisplay}>
+    <div className={classes.fieldTextListDisplay}>
       <TextField 
         ref={ref}
-        className={classes.textListDisplayInput}
+        className={classes.fieldTextListDisplayInput}
         name={name}
         value={value}
         onChange={update}
         required 
       />
       <IconButton 
-        className={classes.textListRemove}
+        className={classes.fieldTextListRemove}
         size="small" 
         onClick={remove}
       >

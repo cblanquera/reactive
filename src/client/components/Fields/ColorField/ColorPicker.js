@@ -4,8 +4,7 @@ import TextField from '@material-ui/core/TextField'
 import Popover from '@material-ui/core/Popover'
 import { 
   StylesProvider, 
-  createGenerateClassName, 
-  makeStyles 
+  createGenerateClassName
 } from '@material-ui/core/styles'
 
 import { ColorButton, ColorBox } from 'material-ui-color'
@@ -14,21 +13,8 @@ import * as ColorTool from './colorTool'
 import uncontrolled from './uncontrolled'
 import * as CommonTypes from './commonTypes'
 import useTranslate from './useTranslate'
-
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    marginTop: 16,
-    flexDirection: 'row',
-    width: '100%',
-  },
-  field: {
-    flexGrow: 1,
-  },
-  colorpickerButton: {
-    margin: 6,
-  }
-})
+//self imports
+import styles from '../styles'
 
 const generateClassName = createGenerateClassName({ seed: 'ColorPicker' })
 
@@ -61,7 +47,7 @@ const ColorPicker = ({
   disablePlainColor,
   shrink
 }) => {
-  const classes = useStyles()
+  const classes = styles()
   const refPicker = useRef(null)
   const [open, setOpen] = useState(false)
   const { t, i18n } = useTranslate()
@@ -152,9 +138,9 @@ const ColorPicker = ({
 
   return (
     <StylesProvider generateClassName={generateClassName}>
-      <div ref={refPicker} className={classes.root}>
+      <div ref={refPicker} className={classes.fieldColorPicker}>
         <TextField 
-          className={classes.field}
+          className={classes.fieldColorPickerField}
           color="primary" 
           name={name}
           value={raw !== 'none' ? raw: ''} 
@@ -165,7 +151,7 @@ const ColorPicker = ({
         />
         <ColorButton
           data-testid="colorpicker-button"
-          className={`muicc-colorpicker-button ${classes.colorpickerButton}`}
+          className={`muicc-colorpicker-button ${classes.fieldColorPickerButton}`}
           color={color}
           onClick={handleClick}
         />

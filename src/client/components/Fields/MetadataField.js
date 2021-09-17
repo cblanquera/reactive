@@ -1,6 +1,5 @@
 //vendor imports
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
 //vendor components
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -10,22 +9,8 @@ import FormControl from '@material-ui/core/FormControl'
 //vendor icons
 import AddIcon from '@material-ui/icons/Add'
 import CloseIcon from '@material-ui/icons/Close'
-
-const styles = makeStyles((theme) => ({
-  metadataDisplay: {
-    marginTop: 16
-  },
-  metadataDisplayKey: {
-    width: 'calc(30% - 10px)'
-  },
-  metadataDisplayValue: {
-    marginLeft: 10, 
-    width: 'calc(70% - 30px)'
-  },
-  metadataRemove: {
-    marginTop: 2
-  }
-}))
+//self imports
+import styles from './styles'
 
 function PairField({ classes, name, value, index, pairs, set }) {
   const update = () => {
@@ -50,23 +35,23 @@ function PairField({ classes, name, value, index, pairs, set }) {
   const valueRef = React.createRef()
 
   return (
-    <div className={classes.metadataDisplay}>
+    <div className={classes.fieldMetadataDisplay}>
       <TextField 
         ref={nameRef}
-        className={classes.metadataDisplayKey}
+        className={classes.fieldMetadataDisplayKey}
         value={name}
         onChange={update}
         required 
       />
       <TextField 
         ref={valueRef}
-        className={classes.metadataDisplayValue}
+        className={classes.fieldMetadataDisplayValue}
         value={value}
         onChange={update}
         required 
       />
       <IconButton 
-        className={classes.metadataRemove}
+        className={classes.fieldMetadataRemove}
         size="small" 
         onClick={remove}
       >

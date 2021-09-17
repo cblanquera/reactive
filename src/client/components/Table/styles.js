@@ -43,4 +43,4 @@ export default makeStyles((theme) => ({
     paddingRight: 10,
     paddingTop: 20
   }
-}))
+}), { name: 'ReactiveComponentTable' })
